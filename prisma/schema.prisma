@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Definição do modelo de dados para Imóvel
+model Imovel {
+  id              String      @id @default(uuid())
+  endereco        String
+  cep             String
+  valor           Float
+  disponibilidade Boolean
+  alugado         Boolean
+}
+
+// Definição do modelo de dados para Locação
+model Locacao {
+  id            String    @id @default(uuid())
+  imovelId      String
+  dataInicio    DateTime
+  dataFim       DateTime
+}

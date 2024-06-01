@@ -1,0 +1,135 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API de Locação de Imóveis",
+    "version": "1.0.0",
+    "title": "Imóvel Rental API"
+  },
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "imoveis",
+      "description": "Operações sobre Imóveis"
+    }
+  ],
+  "paths": {
+    "/imoveis": {
+      "get": {
+        "tags": ["imoveis"],
+        "summary": "Lista todos os imóveis",
+        "responses": {
+          "200": {
+            "description": "Uma lista de imóveis"
+          }
+        }
+      },
+      "post": {
+        "tags": ["imoveis"],
+        "summary": "Cria um novo imóvel",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Imóvel a ser criado",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Imovel"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Imóvel criado"
+          }
+        }
+      }
+    },
+    "/imoveis/{id}": {
+      "get": {
+        "tags": ["imoveis"],
+        "summary": "Busca um imóvel pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Imóvel encontrado"
+          },
+          "404": {
+            "description": "Imóvel não encontrado"
+          }
+        }
+      },
+      "put": {
+        "tags": ["imoveis"],
+        "summary": "Atualiza um imóvel pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Dados do imóvel a ser atualizado",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Imovel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Imóvel atualizado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["imoveis"],
+        "summary": "Deleta um imóvel pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Imóvel deletado"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Imovel": {
+      "type": "object",
+      "required": ["endereco", "cep", "valor", "disponibilidade"],
+      "properties": {
+        "endereco": {
+          "type": "string"
+        },
+        "cep": {
+          "type": "string"
+        },
+        "valor": {
+          "type": "number",
+          "format": "float"
+        },
+        "disponibilidade": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

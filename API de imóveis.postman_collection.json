@@ -1,0 +1,1022 @@
+{
+	"info": {
+		"_postman_id": "bb75a7e2-0d3b-48a3-973b-0f8ff28c0917",
+		"name": "API de imóveis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "21202502"
+	},
+	"item": [
+		{
+			"name": "Imóveis",
+			"item": [
+				{
+					"name": "List Imoveis  02",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/api/imoveis"
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/transactions/"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "715"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Sep 2023 21:32:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"transactions\": [\n        {\n            \"id\": \"7853bd2e-a9b3-466a-9692-696e25824432\",\n            \"title\": \"Compras no Mercado\",\n            \"description\": \"Compra de café e cereal\",\n            \"amount\": 45.96,\n            \"created_at\": \"2023-09-02 20:50:41\",\n            \"session_id\": null\n        },\n        {\n            \"id\": \"856523f5-90c0-49b7-a573-9caee0243062\",\n            \"title\": \"Compras no Mercado\",\n            \"description\": \"Compra de café e cereal\",\n            \"amount\": -45.96,\n            \"created_at\": \"2023-09-02 20:51:05\",\n            \"session_id\": null\n        },\n        {\n            \"id\": \"da3c76aa-3e0a-4500-9fac-b5bc86d9f845\",\n            \"title\": \"Compras no Mercado\",\n            \"description\": \"Compra de café e cereal\",\n            \"amount\": -45.96,\n            \"created_at\": \"2023-09-02 20:51:39\",\n            \"session_id\": null\n        },\n        {\n            \"id\": \"55d874c7-075f-4826-b0c2-153261385c3d\",\n            \"title\": \"\",\n            \"description\": \"\",\n            \"amount\": -45.96,\n            \"created_at\": \"2023-09-02 20:52:02\",\n            \"session_id\": null\n        }\n    ]\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/transactions/"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "24"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Sep 2023 22:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unauthorized\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Imóveis  01",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"endereco\": \"Rua Teste, 124\",\n  \"cep\": \"12345-679\",\n  \"valor\": 150740,\n  \"disponibilidade\": true\n}\n\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/imoveis",
+						"description": "Creates a transaction and saves a session id if it's not already saved.\n\n**Payload**\n\n| Field | Type | **Required** | **Nullable** | **Empty** |\n| --- | --- | --- | --- | --- |\n| title | string | ✅ | ❌ | ❌ |\n| description | string | ✅ | ❌ | ❌ |\n| amount | number | ✅ | ❌ | ❌ |\n| type | \"credit\" or \"debit\", default is \"credit\" | ✅ | ❌ | ❌ |"
+					},
+					"response": [
+						{
+							"name": "201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Compras no Mercado\",\n    \"description\": \"Compra de café e cereal\",\n    \"amount\": 45.96,\n    \"type\": \"debit\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/transactions/"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "46"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Sep 2023 20:51:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Transaction created successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Atualizar um imóvel 04",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"endereco\": \"Novo endereço\",\n    \"cep\": \"Novo CEP\",\n    \"valor\": 1500.00,\n    \"disponibilidade\": true\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/imoveis/24245384-78b3-4d24-9d80-a83b7b627f28"
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/transactions/:id/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7853bd2e-a9b3-466a-9692-696e25824432"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "183"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Sep 2023 21:33:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"7853bd2e-a9b3-466a-9692-696e25824432\",\n    \"title\": \"Compras no Mercado\",\n    \"description\": \"Compra de café e cereal\",\n    \"amount\": 45.96,\n    \"created_at\": \"2023-09-02 20:50:41\",\n    \"session_id\": null\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/transactions/:id/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7853bd2e-a9b3-466a-9692-696e25824432"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "24"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Sep 2023 22:21:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unauthorized\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Obter um imóvel específico 03",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John jjo\",\n  \"lastName\": \"Doe 02\",\n  \"password\": \"7895\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/imoveis/24245384-78b3-4d24-9d80-a83b7b627f28"
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/transactions/:id/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7853bd2e-a9b3-466a-9692-696e25824432"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "183"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Sep 2023 21:33:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"7853bd2e-a9b3-466a-9692-696e25824432\",\n    \"title\": \"Compras no Mercado\",\n    \"description\": \"Compra de café e cereal\",\n    \"amount\": 45.96,\n    \"created_at\": \"2023-09-02 20:50:41\",\n    \"session_id\": null\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/transactions/:id/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7853bd2e-a9b3-466a-9692-696e25824432"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "24"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Sep 2023 22:21:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unauthorized\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Excluir um imóvel 05",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8000/users/6580ba694ce11fa8308b941d"
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/transactions/:id/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7853bd2e-a9b3-466a-9692-696e25824432"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "183"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Sep 2023 21:33:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"7853bd2e-a9b3-466a-9692-696e25824432\",\n    \"title\": \"Compras no Mercado\",\n    \"description\": \"Compra de café e cereal\",\n    \"amount\": 45.96,\n    \"created_at\": \"2023-09-02 20:50:41\",\n    \"session_id\": null\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/transactions/:id/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7853bd2e-a9b3-466a-9692-696e25824432"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "24"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Sep 2023 22:21:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unauthorized\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Locações",
+			"item": [
+				{
+					"name": "Obter todas as locações  07",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/api/imoveis"
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/transactions/"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "715"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Sep 2023 21:32:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"transactions\": [\n        {\n            \"id\": \"7853bd2e-a9b3-466a-9692-696e25824432\",\n            \"title\": \"Compras no Mercado\",\n            \"description\": \"Compra de café e cereal\",\n            \"amount\": 45.96,\n            \"created_at\": \"2023-09-02 20:50:41\",\n            \"session_id\": null\n        },\n        {\n            \"id\": \"856523f5-90c0-49b7-a573-9caee0243062\",\n            \"title\": \"Compras no Mercado\",\n            \"description\": \"Compra de café e cereal\",\n            \"amount\": -45.96,\n            \"created_at\": \"2023-09-02 20:51:05\",\n            \"session_id\": null\n        },\n        {\n            \"id\": \"da3c76aa-3e0a-4500-9fac-b5bc86d9f845\",\n            \"title\": \"Compras no Mercado\",\n            \"description\": \"Compra de café e cereal\",\n            \"amount\": -45.96,\n            \"created_at\": \"2023-09-02 20:51:39\",\n            \"session_id\": null\n        },\n        {\n            \"id\": \"55d874c7-075f-4826-b0c2-153261385c3d\",\n            \"title\": \"\",\n            \"description\": \"\",\n            \"amount\": -45.96,\n            \"created_at\": \"2023-09-02 20:52:02\",\n            \"session_id\": null\n        }\n    ]\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/transactions/"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "24"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Sep 2023 22:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unauthorized\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Criar uma nova locação 06",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"endereco\": \"Rua Teste, 124\",\n  \"cep\": \"12345-679\",\n  \"valor\": 150740,\n  \"disponibilidade\": true\n}\n\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/imoveis",
+						"description": "Creates a transaction and saves a session id if it's not already saved.\n\n**Payload**\n\n| Field | Type | **Required** | **Nullable** | **Empty** |\n| --- | --- | --- | --- | --- |\n| title | string | ✅ | ❌ | ❌ |\n| description | string | ✅ | ❌ | ❌ |\n| amount | number | ✅ | ❌ | ❌ |\n| type | \"credit\" or \"debit\", default is \"credit\" | ✅ | ❌ | ❌ |"
+					},
+					"response": [
+						{
+							"name": "201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Compras no Mercado\",\n    \"description\": \"Compra de café e cereal\",\n    \"amount\": 45.96,\n    \"type\": \"debit\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/transactions/"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "46"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Sep 2023 20:51:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Transaction created successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Atualizar um imóvel  09",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"endereco\": \"Novo endereço\",\n    \"cep\": \"Novo CEP\",\n    \"valor\": 1500.00,\n    \"disponibilidade\": true\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/imoveis/24245384-78b3-4d24-9d80-a83b7b627f28"
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/transactions/:id/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7853bd2e-a9b3-466a-9692-696e25824432"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "183"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Sep 2023 21:33:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"7853bd2e-a9b3-466a-9692-696e25824432\",\n    \"title\": \"Compras no Mercado\",\n    \"description\": \"Compra de café e cereal\",\n    \"amount\": 45.96,\n    \"created_at\": \"2023-09-02 20:50:41\",\n    \"session_id\": null\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/transactions/:id/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7853bd2e-a9b3-466a-9692-696e25824432"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "24"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Sep 2023 22:21:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unauthorized\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Obter uma locação específico 08",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John jjo\",\n  \"lastName\": \"Doe 02\",\n  \"password\": \"7895\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/imoveis/24245384-78b3-4d24-9d80-a83b7b627f28"
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/transactions/:id/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7853bd2e-a9b3-466a-9692-696e25824432"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "183"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Sep 2023 21:33:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"7853bd2e-a9b3-466a-9692-696e25824432\",\n    \"title\": \"Compras no Mercado\",\n    \"description\": \"Compra de café e cereal\",\n    \"amount\": 45.96,\n    \"created_at\": \"2023-09-02 20:50:41\",\n    \"session_id\": null\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/transactions/:id/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7853bd2e-a9b3-466a-9692-696e25824432"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "24"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Sep 2023 22:21:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unauthorized\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Excluir um imóvel  10",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8000/users/6580ba694ce11fa8308b941d"
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/transactions/:id/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7853bd2e-a9b3-466a-9692-696e25824432"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "183"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Sep 2023 21:33:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"7853bd2e-a9b3-466a-9692-696e25824432\",\n    \"title\": \"Compras no Mercado\",\n    \"description\": \"Compra de café e cereal\",\n    \"amount\": 45.96,\n    \"created_at\": \"2023-09-02 20:50:41\",\n    \"session_id\": null\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/transactions/:id/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7853bd2e-a9b3-466a-9692-696e25824432"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "24"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Sep 2023 22:21:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unauthorized\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
